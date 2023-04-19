@@ -27,7 +27,7 @@
     </node>
 
     <node pkg="image_publisher" type="image_publisher" name="image_publisher"
-        args="/home/yslee/catkin_ws/src/Lenna.png">
+        args="/home/yslee/projects/yoloros_ws/src/yolov7-ros/Lenna.png">
         <param name="flip_horizontal" value="false" />
         <param name="flip_vertical" value="false" />
         <param name="frame_id" value="my_camera" />
