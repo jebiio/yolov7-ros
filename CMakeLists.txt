@@ -211,3 +211,7 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(my_detect src/my_detect.cpp)
+target_link_libraries(my_detect ${catkin_LIBRARIES})
+add_dependencies(my_detect ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

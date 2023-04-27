@@ -1,10 +1,14 @@
 <launch>
+
     <node pkg="yolov7_ros" type="detect_ros.py" name="detect" output="screen"
-    ns="yolov7">
+        ns="yolov7">
         <!-- Download the official weights from the original repo -->
         <param name="weights_path" type="str"
             value="$(find yolov7_ros)/yolov7.pt" />
-        <!-- Path to a class_labels.txt file containing your desired class labels. The i-th entry corresponds to the i-th class id. For example, in coco class label 0 corresponds to 'person'. Files for the coco and berkeley deep drive datasets are provided in the 'class_labels/' directory. If you leave it empty then no class labels are visualized.-->
+        <!-- Path to a class_labels.txt file containing your desired class labels. The i-th entry
+        corresponds to the i-th class id. For example, in coco class label 0 corresponds to
+        'person'. Files for the coco and berkeley deep drive datasets are provided in the
+        'class_labels/' directory. If you leave it empty then no class labels are visualized.-->
         <param name="classes_path" type="str"
             value="$(find yolov7_ros)/class_labels/coco.txt" />
         <!-- topic name to subscribe to -->
@@ -27,12 +31,9 @@
         <param name="device" type="str" value="cuda" />
     </node>
 
-    <!-- <node pkg="image_publisher" type="image_publisher" name="image_publisher"
-        args="$(find yolov7_ros)/Lenna.png">
-        <param name="flip_horizontal" value="false" />
-        <param name="flip_vertical" value="false" />
-        <param name="frame_id" value="my_camera" />
-        <param name="publish_rate" value="1" />
-    </node> -->
+    <node pkg="yolov7_ros" type="my_detect" name="my_detect" output="screen">
+        <param name="classes_path" type="str"
+            value="$(find yolov7_ros)/class_labels/coco.txt" />
+    </node>
 
 </launch>
