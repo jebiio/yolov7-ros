@@ -12,13 +12,16 @@ void detectionCallback(const vision_msgs::Detection2DArray::ConstPtr &msg)
     for (const auto &detection : msg->detections)
     {
         // Get the class and position of the detection
-        std::string class_name = labels[detection.results[0].id];
+        if(detection.results[0].id==0)
+        {
+            std::string class_name = labels[detection.results[0].id];
 
-        double x = detection.bbox.center.x;
-        double y = detection.bbox.center.y;
+            double x = detection.bbox.center.x;
+            double y = detection.bbox.center.y;
 
-        // Print the class and position
-        ROS_INFO_STREAM("Detected a " << class_name << " at (" << x << ", " << y << ")");
+            // Print the class and position
+            ROS_INFO_STREAM("Detected a " << class_name << " at (" << x << ", " << y << ")");
+        }
     }
 }
 
